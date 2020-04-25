@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Init class for Vimeo autoplay plugin
+ * Init class for Autoplay vimeo plugin
  *
  * @since 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-class Vimeo_Autoplay {
+class Autoplay_Vimeo {
 
 	/**
-	 * The one and only true Vimeo_Autoplay instance
+	 * The one and only true Autoplay_Vimeo instance
 	 *
 	 * @since 1.0.0
 	 * @access private
@@ -33,13 +33,13 @@ class Vimeo_Autoplay {
 	 * This function instantiates the class, initialize all functions and return the object.
 	 *
 	 * @since 1.0.0
-	 * @return object The one and only true Vimeo_Autoplay instance.
+	 * @return object The one and only true Autoplay_Vimeo instance.
 	 */
 	public static function instance() {
 
-		if ( ! isset( self::$instance ) && ( ! self::$instance instanceof Vimeo_Autoplay ) ) {
+		if ( ! isset( self::$instance ) && ( ! self::$instance instanceof Autoplay_Vimeo ) ) {
 
-			self::$instance = new Vimeo_Autoplay;
+			self::$instance = new Autoplay_Vimeo;
 			self::$instance->set_up_constants();
 			self::$instance->includes();
 
@@ -57,10 +57,10 @@ class Vimeo_Autoplay {
 	 */
 	public function set_up_constants() {
 
-		self::set_up_constant( 'VIMEO_AUTOPLAY_VERSION', $this->version );
-		self::set_up_constant( 'VIMEO_AUTOPLAY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) . '../' );
-		self::set_up_constant( 'VIMEO_AUTOPLAY_PLUGIN_URL', plugin_dir_url( __FILE__ ) . '../' );
-		self::set_up_constant( 'VIMEO_AUTOPLAY_LIBRARIES_PATH', plugin_dir_path( __FILE__ ) );
+		self::set_up_constant( 'AUTOPLAY_VIMEO_VERSION', $this->version );
+		self::set_up_constant( 'AUTOPLAY_VIMEO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) . '../' );
+		self::set_up_constant( 'AUTOPLAY_VIMEO_PLUGIN_URL', plugin_dir_url( __FILE__ ) . '../' );
+		self::set_up_constant( 'AUTOPLAY_VIMEO_LIBRARIES_PATH', plugin_dir_path( __FILE__ ) );
 
 	}
 
@@ -89,8 +89,8 @@ class Vimeo_Autoplay {
 	 */
 	public function includes() {
 
-		if ( defined( 'VIMEO_AUTOPLAY_LIBRARIES_PATH' ) ) {
-			require VIMEO_AUTOPLAY_LIBRARIES_PATH . '/vimeo-autoplay-frontend.php';
+		if ( defined( 'AUTOPLAY_VIMEO_LIBRARIES_PATH' ) ) {
+			require AUTOPLAY_VIMEO_LIBRARIES_PATH . '/autoplay-vimeo-frontend.php';
 		}
 
 	}

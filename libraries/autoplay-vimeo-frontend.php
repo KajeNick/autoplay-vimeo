@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Vimeo_Autoplay_Fontend
+ * Class Autoplay_Vimeo_Fontend
  * Init all methods for work
  *
  * @since 1.0.0
@@ -8,16 +8,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class Vimeo_Autoplay_Fontend {
+class Autoplay_Vimeo_Fontend {
 
 	/**
-	 * Vimeo_Autoplay_Fontend initialization.
+	 * Autoplay_Vimeo_Fontend initialization.
 	 *
 	 * @since 1.0.0
 	 */
 	public function init() {
 
-		add_shortcode( 'vimeo-autoplay', array( $this, 'show_option' ) );
+		add_shortcode( 'autoplay-vimeo', array( $this, 'show_option' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ), 10 );
 
 		add_action( 'wp_ajax_change_autoload', array( $this, 'ajax_change_autoload' ), 99 );
@@ -27,16 +27,16 @@ class Vimeo_Autoplay_Fontend {
 
 	public function add_scripts() {
 
-		wp_enqueue_style( 'vimeo-autoplay-style', VIMEO_AUTOPLAY_PLUGIN_URL . '/assets/style.css' );
+		wp_enqueue_style( 'autoplay-vimeo-style', AUTOPLAY_VIMEO_PLUGIN_URL . '/assets/style.css' );
 
-		wp_enqueue_script( 'vimeo-autoplay-scripts', VIMEO_AUTOPLAY_PLUGIN_URL . '/assets/scripts.js',
+		wp_enqueue_script( 'autoplay-vimeo-scripts', AUTOPLAY_VIMEO_PLUGIN_URL . '/assets/scripts.js',
 			array( 'jquery' ), time(), true );
 
-		wp_enqueue_script( 'vimeo-autoplay-player-js', 'https://player.vimeo.com/api/player.js',
+		wp_enqueue_script( 'autoplay-vimeo-player-js', 'https://player.vimeo.com/api/player.js',
 			array( 'jquery' ), time(), true );
 
 		wp_localize_script(
-			'vimeo-autoplay-scripts',
+			'autoplay-vimeo-scripts',
 			'ajax_object',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
@@ -56,11 +56,11 @@ class Vimeo_Autoplay_Fontend {
 	 */
 	public function show_option( $attrs ) {
 
-		$vimeo_autoplay = get_user_meta( get_current_user_id(), 'vimeo_autoplay', true );
+		$autoplay_vimeo = get_user_meta( get_current_user_id(), 'autoplay_vimeo', true );
 
-		$display = '<label class="vimeo-autoplay-label">
-						<input class="cb cb1" type="checkbox" name="vimeo_autoplay" '
-		           . checked( $vimeo_autoplay, 1, false ) . ' />
+		$display = '<label class="autoplay-vimeo-label">
+						<input class="cb cb1" type="checkbox" name="autoplay_vimeo" '
+		           . checked( $autoplay_vimeo, 1, false ) . ' />
   						<i></i> 
   						<span>Auto play videos</span>
                     </label>';
@@ -77,7 +77,7 @@ class Vimeo_Autoplay_Fontend {
 
 		ob_clean();
 
-		update_user_meta( get_current_user_id(), 'vimeo_autoplay', $_POST['state'] == 1 ? 1 : 0 );
+		update_user_meta( get_current_user_id(), 'autoplay_vimeo', $_POST['state'] == 1 ? 1 : 0 );
 		wp_send_json_success();
 		wp_die();
 
@@ -86,7 +86,7 @@ class Vimeo_Autoplay_Fontend {
 
 function legacy_geo_members_runner() {
 
-	$frontend = new Vimeo_Autoplay_Fontend;
+	$frontend = new Autoplay_Vimeo_Fontend;
 	$frontend->init();
 
 	return true;
