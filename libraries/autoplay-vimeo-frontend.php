@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Autoplay_Vimeo_Fontend
+ * Class NAutoplay_Vimeo_Fontend
  * Init all methods for work
  *
  * @since 1.0.0
@@ -8,10 +8,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class Autoplay_Vimeo_Fontend {
+class NAutoplay_Vimeo_Fontend {
 
 	/**
-	 * Autoplay_Vimeo_Fontend initialization.
+	 * NAutoplay_Vimeo_Fontend initialization.
 	 *
 	 * @since 1.0.0
 	 */
@@ -25,6 +25,11 @@ class Autoplay_Vimeo_Fontend {
 
 	}
 
+	/**
+	 * Init frontend scripts
+	 *
+	 * @since 1.0.0
+	 */
 	public function add_scripts() {
 
 		wp_enqueue_style( 'autoplay-vimeo-style', AUTOPLAY_VIMEO_PLUGIN_URL . '/assets/style.css' );
@@ -73,7 +78,7 @@ class Autoplay_Vimeo_Fontend {
 	 *
 	 * @since 1.0.0
 	 */
-	function ajax_change_autoload() {
+	public function ajax_change_autoload() {
 
 		ob_clean();
 
@@ -86,7 +91,7 @@ class Autoplay_Vimeo_Fontend {
 
 function legacy_geo_members_runner() {
 
-	$frontend = new Autoplay_Vimeo_Fontend;
+	$frontend = new NAutoplay_Vimeo_Fontend;
 	$frontend->init();
 
 	return true;

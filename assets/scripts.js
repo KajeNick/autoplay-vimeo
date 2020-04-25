@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
-    let autoplayCheckbox = $('input[name="vimeo_autoplay"]');
+    let autoplayCheckbox = $('input[name="autoplay_vimeo"]');
 
     if (autoplayCheckbox.length) {
         let iFrames = $('iframe'),
@@ -33,7 +33,7 @@ jQuery(document).ready(function ($) {
                 for (let i = 0; i < players.length; i++) {
                     players[i].vimeoPlayer.on('ended', function () {
 
-                        if ($('input[name="vimeo_autoplay"]').is(':checked')) {
+                        if ($('input[name="autoplay_vimeo"]').is(':checked')) {
                             let nextKey = i + 1;
                             if (nextKey < players.length) {
                                 if (fullScreen) {

@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Init class for Autoplay vimeo plugin
+ * Init class for N | Autoplay vimeo plugin
  *
  * @since 1.0.0
  */
 
 defined( 'ABSPATH' ) || exit;
 
-class Autoplay_Vimeo {
+class NAutoplay_Vimeo {
 
 	/**
-	 * The one and only true Autoplay_Vimeo instance
+	 * The one and only true NAutoplay_Vimeo instance
 	 *
 	 * @since 1.0.0
 	 * @access private
@@ -33,13 +33,13 @@ class Autoplay_Vimeo {
 	 * This function instantiates the class, initialize all functions and return the object.
 	 *
 	 * @since 1.0.0
-	 * @return object The one and only true Autoplay_Vimeo instance.
+	 * @return object The one and only true NAutoplay_Vimeo instance.
 	 */
 	public static function instance() {
 
-		if ( ! isset( self::$instance ) && ( ! self::$instance instanceof Autoplay_Vimeo ) ) {
+		if ( ! isset( self::$instance ) && ( ! self::$instance instanceof NAutoplay_Vimeo ) ) {
 
-			self::$instance = new Autoplay_Vimeo;
+			self::$instance = new NAutoplay_Vimeo;
 			self::$instance->set_up_constants();
 			self::$instance->includes();
 
